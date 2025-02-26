@@ -4,32 +4,37 @@ import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.BinaryMessenger;
 
 /**
- * PdfViewerPlugin using the new Flutter v2 plugin embedding.
- * 
- * <p>If you need backward compatibility with older Flutter versions (v1 embedding),
- * you should keep or restore the static registerWith(...) method referencing
- * io.flutter.plugin.common.PluginRegistry.Registrar. However, that method will not
- * compile in newer Flutter environments where Registrar no longer exists.
+ * A Flutter plugin for rendering PDF files using the v2 embedding API.
  */
 public class PdfViewerPlugin implements FlutterPlugin {
+  /**
+   * Default constructor for the PdfViewerPlugin.
+   */
+  public PdfViewerPlugin() {}
 
-  public PdfViewerPlugin() {
-    // Default constructor
-  }
-
+  /**
+   * Called when the plugin is attached to the Flutter engine.
+   * Registers the PDF viewer factory with the platform view registry.
+   *
+   * @param binding The FlutterPluginBinding providing access to the engine.
+   */
   @Override
   public void onAttachedToEngine(FlutterPluginBinding binding) {
     BinaryMessenger messenger = binding.getBinaryMessenger();
     binding
         .getPlatformViewRegistry()
         .registerViewFactory(
-            "pdf_viewer_plugin",
-            new PdfViewerFactory(messenger, /* containerView= */ null)
-        );
+            "pdf_viewer_plugin", new PdfViewerFactory(messenger, /*containerView=*/ null));
   }
 
+  /**
+   * Called when the plugin is detached from the Flutter engine.
+   * No cleanup is required for this plugin.
+   *
+   * @param binding The FlutterPluginBinding providing access to the engine.
+   */
   @Override
   public void onDetachedFromEngine(FlutterPluginBinding binding) {
-    // Clean up if necessary
+    // No cleanup needed
   }
 }
