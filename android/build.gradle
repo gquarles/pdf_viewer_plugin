@@ -1,34 +1,8 @@
-plugins {
-    id "com.android.library"
-    id "org.jetbrains.kotlin.android"
+plugins { id "com.android.library"; id "org.jetbrains.kotlin.android" }
+android { namespace "dev.britto.pdf_viewer_plugin"; compileSdkVersion 34
+  defaultConfig { minSdkVersion 21 }
+  compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
+  kotlinOptions { jvmTarget = "17" }
 }
-
-android {
-    // keep the old manifest package as the namespace
-    namespace "dev.britto.pdf_viewer_plugin"
-    compileSdkVersion 34
-
-    defaultConfig {
-        minSdkVersion 21
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
-    }
-    kotlinOptions { jvmTarget = "17" }
-}
-
-repositories {
-    google()
-    mavenCentral()
-    maven { url "https://jitpack.io" }
-}
-
-dependencies {
-    // remove any "{ force = true }" usage
-    // implementation("com.github.barteksc:android-pdf-viewer:3.0.0-beta.4")
-
-    // use the maintained fork
-    implementation("com.github.mhiew:android-pdf-viewer:3.2.0-beta.3")
-}
+repositories { google(); mavenCentral(); maven { url "https://jitpack.io" } }
+dependencies { implementation("com.github.mhiew:android-pdf-viewer:3.2.0-beta.3") }
