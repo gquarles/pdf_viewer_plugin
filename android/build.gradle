@@ -4,7 +4,8 @@ plugins {
 }
 
 android {
-    namespace "io.flutter.plugins.pdf_viewer_plugin"
+    // match the old manifest package so nothing else breaks
+    namespace "dev.britto.pdf_viewer_plugin"
     compileSdkVersion 34
 
     defaultConfig {
@@ -27,10 +28,9 @@ repositories {
 }
 
 dependencies {
-    // Remove the Gradle 8-incompatible "force"
+    // remove the Gradle 8-incompatible "force"
     // implementation('com.github.barteksc:android-pdf-viewer:3.0.0-beta.4') { force = true }
 
-    // Use maintained coords and pin strictly
     implementation("com.github.mhiew:android-pdf-viewer:3.2.0-beta.3") {
         version { strictly("3.2.0-beta.3") }
     }
