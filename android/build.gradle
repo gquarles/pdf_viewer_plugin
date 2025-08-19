@@ -4,14 +4,12 @@ plugins {
 }
 
 android {
-    // match the package used in the Kotlin sources (e.g., first line of *.kt files)
+    // keep the old manifest package as the namespace
     namespace "dev.britto.pdf_viewer_plugin"
-
     compileSdkVersion 34
+
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 34
-        consumerProguardFiles "consumer-rules.pro"
     }
 
     compileOptions {
@@ -28,11 +26,9 @@ repositories {
 }
 
 dependencies {
-    // remove the old Gradle-8-incompatible "force"
-    // implementation('com.github.barteksc:android-pdf-viewer:3.0.0-beta.4') { force = true }
+    // remove any "{ force = true }" usage
+    // implementation("com.github.barteksc:android-pdf-viewer:3.0.0-beta.4")
 
-    // Use maintained coords and pin strictly
-    implementation("com.github.mhiew:android-pdf-viewer:3.2.0-beta.3") {
-        version { strictly("3.2.0-beta.3") }
-    }
+    // use the maintained fork
+    implementation("com.github.mhiew:android-pdf-viewer:3.2.0-beta.3")
 }
